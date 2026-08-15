@@ -25,6 +25,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* =========================================
+   TYPEWRITER
+   ========================================= */
+
 .typewriter-cursor {
   display: inline-block;
   margin-left: 4px;
@@ -43,6 +47,10 @@ body {
   }
 }
 
+/* =========================================
+   MUSIC PLAYER
+   ========================================= */
+
 .player-progress::-webkit-slider-thumb {
   appearance: none;
   width: 12px;
@@ -59,4 +67,160 @@ body {
   border-radius: 50%;
   background: white;
   cursor: pointer;
+}
+
+/* =========================================
+   BUS DRIVER — BUS MOVEMENT
+   ========================================= */
+
+@keyframes bus-drive {
+  from {
+    transform: translateX(100vw);
+  }
+
+  to {
+    transform: translateX(-120%);
+  }
+}
+
+.bus-driving {
+  animation: bus-drive 14s linear infinite;
+  will-change: transform;
+}
+
+/* =========================================
+   BUS DRIVER — BUS SUSPENSION
+   ========================================= */
+
+@keyframes bus-bounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  20% {
+    transform: translateY(-2px);
+  }
+
+  40% {
+    transform: translateY(1px);
+  }
+
+  55% {
+    transform: translateY(-3px);
+  }
+
+  70% {
+    transform: translateY(1px);
+  }
+
+  85% {
+    transform: translateY(-1px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.bus-bounce {
+  animation: bus-bounce 0.8s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* =========================================
+   BUS DRIVER — MOVING ENVIRONMENT
+   ========================================= */
+
+@keyframes bus-environment-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    /* Move exactly two viewport widths left (50% of the 400% track) */
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.bus-environment-track {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+
+  /*
+   * Four complete viewport-width panels.
+   * We animate across two panels (Normal -> Mirrored -> Normal)
+   * so it can snap back to the start seamlessly.
+   */
+  width: 400%;
+  height: 100%;
+
+  /* Doubled time to maintain original scroll speed (14s -> 28s) */
+  animation: bus-environment-scroll 28s linear infinite;
+
+  will-change: transform;
+}
+
+.bus-environment-panel {
+  /*
+   * Each panel is exactly 25% of the 400% track (one viewport).
+   */
+  flex: 0 0 25%;
+
+  width: 25%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  
+  /* Slightly scale up to overlap edges and eliminate 1px sub-pixel rendering gaps */
+  transform: scaleX(1.005);
+}
+
+/* Flip every even panel horizontally so the image edges match perfectly */
+.bus-environment-panel:nth-child(even) {
+  transform: scaleX(-1.005);
+}
+
+/* =========================================
+   BUS DRIVER — ROTATING TIRES
+   ========================================= */
+
+.bus-tire {
+  position: absolute;
+
+  width: 80px;
+  height: 80px;
+
+  object-fit: contain;
+
+  z-index: 2;
+
+  animation: bus-tire-spin 0.55s linear infinite;
+
+  transform-origin: center center;
+
+  will-change: transform;
+}
+
+@keyframes bus-tire-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.bus-tire-rear {
+  left: 10.5%;
+  bottom: 15%;
+}
+
+.bus-tire-front {
+  left: 60%;
+  bottom: 15%;
 }
