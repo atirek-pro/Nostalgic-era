@@ -1,7 +1,7 @@
 const experiences = [
   {
     slug: "raju-mistri",
-    name: "Raju Mistri",
+    name: "राजू मिस्त्री",
     subtitle: "Kaam kal hoga malik.",
     background: "/experiences/raju-mistri/background.png",
     youtubePlaylistId: "PLbQmWBgY2m1pTsKGnmvM703Ijl8zAKK1c",
@@ -19,7 +19,7 @@ const experiences = [
 
   {
     slug: "bus-driver",
-    name: "Bus Driver",
+    name: "ਪੈਪਸੂ ਬੱਸ ਡਰਾਈਵਰ",
     subtitle: "Ticketaan lai lo! Peeche ho jao thoda.",
     background: "/experiences/bus-driver/background.png",
     youtubePlaylistId: "PLiPktHBzHpQiDSrQ9Qeb8DvZREM1R02h1",
@@ -30,7 +30,7 @@ const experiences = [
 
   {
     slug: "deluxe-saloon",
-    name: "Deluxe Saloon",
+    name: "डिलक्स सलून",
     subtitle: "Side se zero, upar se medium. Relax karo boss.",
     background: "/experiences/deluxe-saloon/background.png",
     youtubePlaylistId: "PLG7MG-HX4zYA",
@@ -39,7 +39,7 @@ const experiences = [
 
   {
     slug: "aslam-painter",
-    name: "Aslam Painter",
+    name: "अस्लाम Painter",
     subtitle: "Do coat lagenge sirji, deewar ekdum chamkegi.",
     background: "/experiences/aslam-painter/background.png",
     youtubePlaylistId: "PLq-bT4s33RYADNkcClDkLPovaKJx0HTDM",
