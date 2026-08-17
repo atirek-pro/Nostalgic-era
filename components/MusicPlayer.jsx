@@ -10,11 +10,13 @@ export default function MusicPlayer({
   onEnded,
   onNext,
   onPrevious,
+  onPlaybackStart,
   autoPlay = false,
 }) {
   const playerRef = useRef(null);
   const onEndedRef = useRef(onEnded);
   const intervalRef = useRef(null);
+  const onPlaybackStartRef = useRef(onPlaybackStart);
 
   const [isPlayerReady, setIsPlayerReady] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -31,6 +33,10 @@ export default function MusicPlayer({
   useEffect(() => {
     onEndedRef.current = onEnded;
   }, [onEnded]);
+
+  useEffect(() => {
+    onPlaybackStartRef.current = onPlaybackStart;
+  }, [onPlaybackStart]);
 
   useEffect(() => {
     if (!youtubeId && !playlistId) return;
@@ -120,12 +126,16 @@ export default function MusicPlayer({
              * Playing
              */
             if (event.data === window.YT.PlayerState.PLAYING) {
-              setIsPlaying(true);
+              console.log("▶️ YouTube PLAYING event fired");
 
+              setIsPlaying(true);
               startProgressTracking();
 
-              if (isPlaylist) {
-                updateVideoInformation();
+              if (onPlaybackStartRef.current) {
+                console.log("🔥 Calling onPlaybackStart");
+                onPlaybackStartRef.current();
+              } else {
+                console.log("❌ onPlaybackStart is missing");
               }
             }
 

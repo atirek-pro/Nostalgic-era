@@ -7,27 +7,38 @@ export default function Playlist({
   songs = [],
   youtubePlaylistId,
   spotifyPlaylistUrl,
+  onPlaybackStart,
 }) {
   /*
    * Provider priority:
    *
-   * 1. YouTube playlist
-   * 2. Spotify playlist
-   * 3. Individual YouTube songs
-   * 4. Nothing
+   * YouTube
+   *    ↓
+   * Spotify
+   *    ↓
+   * Individual songs
+   *    ↓
+   * Nothing
    */
 
-  // YouTube has priority if available
   if (youtubePlaylistId) {
-    return <MusicPlayer playlistId={youtubePlaylistId} />;
+    return (
+      <MusicPlayer
+        playlistId={youtubePlaylistId}
+        onPlaybackStart={onPlaybackStart}
+      />
+    );
   }
 
-  // Spotify fallback
   if (spotifyPlaylistUrl) {
-    return <SpotifyPlayer playlistUrl={spotifyPlaylistUrl} />;
+    return (
+      <SpotifyPlayer
+        playlistUrl={spotifyPlaylistUrl}
+        onPlaybackStart={onPlaybackStart}
+      />
+    );
   }
 
-  // Existing individual-song fallback
   if (songs.length === 0) {
     return <p className="text-center text-white/50">No songs available yet.</p>;
   }
@@ -40,6 +51,7 @@ export default function Playlist({
           youtubeId={song.youtubeId}
           title={song.title}
           artist={song.artist}
+          onPlaybackStart={onPlaybackStart}
         />
       ))}
     </div>

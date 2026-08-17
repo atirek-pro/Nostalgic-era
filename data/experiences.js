@@ -40,6 +40,14 @@ const experiences = [
     background: "/experiences/aslam-painter/background.png",
     youtubePlaylistId: "PLq-bT4s33RYADNkcClDkLPovaKJx0HTDM",
   },
+  {
+    slug: "himachal-bus",
+    name: "HRTC",
+    subtitle: "भाय जी, जरा सीट देना!",
+    background: "/experiences/himachal-bus/background.png",
+    youtubePlaylistId: "PL0umg_TNpoZTTdZVIi5tfX69pRmoMFGna",
+    drivingVideo: "/experiences/himachal-bus/driving-loop.mp4",
+  },
 ];
 
 export default experiences;
